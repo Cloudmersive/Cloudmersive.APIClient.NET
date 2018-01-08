@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Cloudmersive.APIClient.ClientSDK</id>
-    <version>1.18</version>
+    <version>1.21</version>
     <title>$title$</title>
     <authors>Cloudmersive</authors>
     <owners>$author$</owners>
@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Cloudmersive Cloud API Client SDK library makes it incredibly easy to call Cloudmersive APIs from your .NET applications.</description>
     <releaseNotes>First version of Cloudmersive .NET Client.</releaseNotes>
-    <copyright>Copyright 2017 by Appmersive, LLC.</copyright>
+    <copyright>Copyright 2018 by Appmersive, LLC.</copyright>
     <tags>Cloudmersive Client API SDK</tags>
   </metadata>
 </package>
