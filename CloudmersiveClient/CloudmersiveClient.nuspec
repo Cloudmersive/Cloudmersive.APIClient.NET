@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Cloudmersive.APIClient.ClientSDK</id>
+    <version>1.18</version>
+    <title>$title$</title>
+    <authors>Cloudmersive</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://cloudmersive.com/eula/client-eula.txt</licenseUrl>
+    <projectUrl>https://cloudmersive.com</projectUrl>
+    <iconUrl>https://cloudmersive.com/images/cmsdk.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Cloudmersive Cloud API Client SDK library makes it incredibly easy to call Cloudmersive APIs from your .NET applications.</description>
+    <releaseNotes>First version of Cloudmersive .NET Client.</releaseNotes>
+    <copyright>Copyright 2017 by Appmersive, LLC.</copyright>
+    <tags>Cloudmersive Client API SDK</tags>
+  </metadata>
+</package>

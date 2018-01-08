@@ -1,0 +1,19 @@
+﻿<Window x:Class="CloudmersiveClientTestApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CloudmersiveClientTestApp"
+        mc:Ignorable="d"
+        Title="Cloudmersive Client SDK Test App" Height="350" Width="525">
+    <Grid>
+        <Button Content="POS Tag" HorizontalAlignment="Left" Margin="214,134,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Height="78" Margin="22,38,0,0" TextWrapping="Wrap" Text="Neptune is the eighth and farthest known planet from the Sun in the Solar System. In the Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet." VerticalAlignment="Top" Width="267" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+        <Label Content="Input:" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top"/>
+        <Label Content="Output:" HorizontalAlignment="Left" Margin="22,181,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtOutput" HorizontalAlignment="Left" Height="78" Margin="22,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+        <Button x:Name="btnParse" Content="Parse" HorizontalAlignment="Left" Margin="126,134,0,0" VerticalAlignment="Top" Width="75" Click="btnParse_Click"/>
+        <Button x:Name="btnEntities" Content="Entities" HorizontalAlignment="Left" Margin="31,134,0,0" VerticalAlignment="Top" Width="75" Click="btnEntities_Click"/>
+
+    </Grid>
+</Window>
