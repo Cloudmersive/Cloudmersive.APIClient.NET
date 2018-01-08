@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudmersiveClientTestApp", "CloudmersiveClientTestApp\CloudmersiveClientTestApp.csproj", "{E1CD7F39-6CD7-43B6-B105-CC154397D119}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudmersiveClient", "CloudmersiveClient\CloudmersiveClient.csproj", "{9E66379E-AF96-45AD-B833-5999443C66FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1CD7F39-6CD7-43B6-B105-CC154397D119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CD7F39-6CD7-43B6-B105-CC154397D119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1CD7F39-6CD7-43B6-B105-CC154397D119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1CD7F39-6CD7-43B6-B105-CC154397D119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E66379E-AF96-45AD-B833-5999443C66FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E66379E-AF96-45AD-B833-5999443C66FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E66379E-AF96-45AD-B833-5999443C66FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E66379E-AF96-45AD-B833-5999443C66FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {196F7C0A-147C-44A3-B085-F48E2E4ABC8A}
+	EndGlobalSection
+EndGlobal
