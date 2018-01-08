@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CloudmersiveClient.Validation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,27 @@ namespace CloudmersiveClient
 
 
                 return JsonConvert.DeserializeObject<FullEmailValidationResponse>(result);
+            }
+        }
+
+        public GeolocateIPResponse GeolocateIP(string ip)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = System.Text.Encoding.ASCII.GetBytes("=" + ip);
+
+                var response = client.UploadData("https://api.cloudmersive.com/validate/ip/geolocate", "POST", bytes);
+
+                string result = System.Text.Encoding.ASCII.GetString(response);
+
+
+
+                return JsonConvert.DeserializeObject<GeolocateIPResponse>(result);
             }
         }
     }

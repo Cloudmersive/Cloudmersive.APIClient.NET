@@ -14,6 +14,9 @@
         <TextBox x:Name="txtOutput" HorizontalAlignment="Left" Height="78" Margin="22,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
         <Button x:Name="btnParse" Content="Parse" HorizontalAlignment="Left" Margin="126,134,0,0" VerticalAlignment="Top" Width="75" Click="btnParse_Click"/>
         <Button x:Name="btnEntities" Content="Entities" HorizontalAlignment="Left" Margin="31,134,0,0" VerticalAlignment="Top" Width="75" Click="btnEntities_Click"/>
+        <Label Content="IP:" HorizontalAlignment="Left" Margin="309,38,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnGeolocate" Content="Geolocate" HorizontalAlignment="Left" Margin="318,85,0,0" VerticalAlignment="Top" Width="75" Click="btnGeolocate_Click"/>
+        <TextBox x:Name="txtIP" HorizontalAlignment="Left" Height="23" Margin="332,38,0,0" TextWrapping="Wrap" Text="55.55.55.55" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

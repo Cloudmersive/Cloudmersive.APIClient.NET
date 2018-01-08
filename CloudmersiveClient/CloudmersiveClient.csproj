@@ -53,6 +53,7 @@
     <Compile Include="CloudmersiveValidationClient.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\GeolocateResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CloudmersiveClient.nuspec" />
