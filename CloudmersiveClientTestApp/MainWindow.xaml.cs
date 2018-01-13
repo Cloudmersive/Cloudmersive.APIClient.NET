@@ -28,28 +28,28 @@ namespace CloudmersiveClientTestApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CloudmersiveNlpApiClient client = new CloudmersiveNlpApiClient("6741ba5b-2d53-4d7f-9609-7129efc3b7a7");
+            CloudmersiveNlpApiClient client = new CloudmersiveNlpApiClient();
 
             txtOutput.Text = client.PartOfSpeechTag_String(txtInput.Text);
         }
 
         private void btnParse_Click(object sender, RoutedEventArgs e)
         {
-            CloudmersiveNlpApiClient client = new CloudmersiveNlpApiClient("6741ba5b-2d53-4d7f-9609-7129efc3b7a7");
+            CloudmersiveNlpApiClient client = new CloudmersiveNlpApiClient();
 
             txtOutput.Text = client.Parse_String(txtInput.Text);
         }
 
         private void btnEntities_Click(object sender, RoutedEventArgs e)
         {
-            CloudmersiveNlpApiClient client = new CloudmersiveNlpApiClient("6741ba5b-2d53-4d7f-9609-7129efc3b7a7");
+            CloudmersiveNlpApiClient client = new CloudmersiveNlpApiClient();
 
             txtOutput.Text = client.ExtractEntities_String(txtInput.Text);
         }
 
         private void btnGeolocate_Click(object sender, RoutedEventArgs e)
         {
-            CloudmersiveValidationApiClient client = new CloudmersiveValidationApiClient("6741ba5b-2d53-4d7f-9609-7129efc3b7a7");
+            CloudmersiveValidationApiClient client = new CloudmersiveValidationApiClient();
 
             var result = client.GeolocateIP(txtIP.Text);
             txtOutput.Text = result.City + ", " + result.CountryName;
@@ -57,7 +57,7 @@ namespace CloudmersiveClientTestApp
 
         private void btnKeyUsage_Click(object sender, RoutedEventArgs e)
         {
-            CloudmersiveValidationApiClient client = new CloudmersiveValidationApiClient("6741ba5b-2d53-4d7f-9609-7129efc3b7a7");
+            CloudmersiveValidationApiClient client = new CloudmersiveValidationApiClient();
 
             txtOutput.Text = client.GetApikeyUsage().ToString();
         }

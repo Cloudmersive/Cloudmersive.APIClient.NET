@@ -16,6 +16,11 @@ namespace CloudmersiveClient
             Apikey = apikey;
         }
 
+        public CloudmersiveValidationApiClient()
+        {
+            LoadApikeyFromConfig();
+        }
+
         public class FullEmailValidationResponse
         {
             public bool ValidAddress;

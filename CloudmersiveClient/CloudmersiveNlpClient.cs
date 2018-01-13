@@ -16,6 +16,11 @@ namespace CloudmersiveClient
             Apikey = apikey;
         }
 
+        public CloudmersiveNlpApiClient()
+        {
+            LoadApikeyFromConfig();
+        }
+
         public string PartOfSpeechTag_String(string input)
         {
             using (WebClient client = new WebClient())
