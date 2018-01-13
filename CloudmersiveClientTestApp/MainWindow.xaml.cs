@@ -54,5 +54,12 @@ namespace CloudmersiveClientTestApp
             var result = client.GeolocateIP(txtIP.Text);
             txtOutput.Text = result.City + ", " + result.CountryName;
         }
+
+        private void btnKeyUsage_Click(object sender, RoutedEventArgs e)
+        {
+            CloudmersiveValidationApiClient client = new CloudmersiveValidationApiClient("6741ba5b-2d53-4d7f-9609-7129efc3b7a7");
+
+            txtOutput.Text = client.GetApikeyUsage().ToString();
+        }
     }
 }
