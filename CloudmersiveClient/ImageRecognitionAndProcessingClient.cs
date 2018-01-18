@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -17,6 +18,11 @@ namespace CloudmersiveClient
         public ImageRecognitionAndProcessingClient()
         {
             LoadApikeyFromConfig();
+        }
+
+        public string RecognizeImageToDescription(string fileName)
+        {
+            return RecognizeImageToDescription(File.ReadAllBytes(fileName));
         }
 
         public string RecognizeImageToDescription(byte[] imageBytes)
