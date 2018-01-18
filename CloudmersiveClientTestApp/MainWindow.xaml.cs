@@ -72,7 +72,7 @@ namespace CloudmersiveClientTestApp
             string path = dlg.FileName;
 
             ImageRecognitionAndProcessingClient client = new ImageRecognitionAndProcessingClient();
-            txtOutput.Text = client.RecognizeImageToDescription(path);
+            txtOutput.Text = client.RecognizeImageToDescription(path).BestOutcome.Description;
         }
     }
 }
