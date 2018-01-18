@@ -54,6 +54,7 @@
     <Compile Include="CloudmersiveNlpClient.cs" />
     <Compile Include="CloudmersiveValidationClient.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="ImageRecognitionAndProcessingClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\GeolocateResponse.cs" />
     <Compile Include="Validation\ImageRecognitionResponse.cs" />
