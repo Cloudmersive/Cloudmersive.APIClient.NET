@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CloudmersiveClient.Validation;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,12 +22,12 @@ namespace CloudmersiveClient
             LoadApikeyFromConfig();
         }
 
-        public string RecognizeImageToDescription(string fileName)
+        public ImageDescriptionResponse RecognizeImageToDescription(string fileName)
         {
             return RecognizeImageToDescription(File.ReadAllBytes(fileName));
         }
 
-        public string RecognizeImageToDescription(byte[] imageBytes)
+        public ImageDescriptionResponse RecognizeImageToDescription(byte[] imageBytes)
         {
             using (WebClient client = new WebClient())
             {
@@ -38,9 +40,8 @@ namespace CloudmersiveClient
 
                 var response = client.UploadData("https://api.cloudmersive.com/image/recognize/describe", "POST", bytes);
 
-                string result = System.Text.Encoding.ASCII.GetString(response);
+                ImageDescriptionResponse result = JsonConvert.DeserializeObject<ImageDescriptionResponse>( System.Text.Encoding.ASCII.GetString(response) );
 
-                result = Helpers.DecodeEscapedStrings(result);
 
                 return result;
             }
