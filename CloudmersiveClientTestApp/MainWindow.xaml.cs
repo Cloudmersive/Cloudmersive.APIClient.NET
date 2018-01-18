@@ -66,7 +66,7 @@ namespace CloudmersiveClientTestApp
         private void btnRecognizeImage_Click(object sender, RoutedEventArgs e)
         {
             var dlg = new OpenFileDialog();
-            if (dlg.ShowDialog() != DialogResult.OK)
+            if (! dlg.ShowDialog().Value )
                 return;
 
             string path = dlg.FileName;
