@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CloudmersiveClient;
+using Microsoft.Win32;
 
 namespace CloudmersiveClientTestApp
 {
@@ -60,6 +61,18 @@ namespace CloudmersiveClientTestApp
             CloudmersiveValidationApiClient client = new CloudmersiveValidationApiClient();
 
             txtOutput.Text = client.GetApikeyUsage().ToString();
+        }
+
+        private void btnRecognizeImage_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
+
+            string path = dlg.FileName;
+
+            ImageRecognitionAndProcessingClient client = new ImageRecognitionAndProcessingClient();
+            txtOutput.Text = client.RecognizeImageToDescription(path);
         }
     }
 }

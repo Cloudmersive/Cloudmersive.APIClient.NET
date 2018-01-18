@@ -17,7 +17,8 @@
         <Label Content="IP:" HorizontalAlignment="Left" Margin="309,38,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnGeolocate" Content="Geolocate" HorizontalAlignment="Left" Margin="318,85,0,0" VerticalAlignment="Top" Width="75" Click="btnGeolocate_Click"/>
         <TextBox x:Name="txtIP" HorizontalAlignment="Left" Height="23" Margin="332,38,0,0" TextWrapping="Wrap" Text="55.55.55.55" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnKeyUsage" Content="Key Usage" HorizontalAlignment="Left" Margin="323,171,0,0" VerticalAlignment="Top" Width="75" Click="btnKeyUsage_Click"/>
+        <Button x:Name="btnKeyUsage" Content="Key Usage" HorizontalAlignment="Left" Margin="432,289,0,0" VerticalAlignment="Top" Width="75" Click="btnKeyUsage_Click"/>
+        <Button x:Name="btnRecognizeImage" Content="Recognize Image..." HorizontalAlignment="Left" Margin="343,223,0,0" VerticalAlignment="Top" Width="125" Click="btnRecognizeImage_Click"/>
 
     </Grid>
 </Window>
