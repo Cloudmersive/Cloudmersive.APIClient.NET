@@ -38,7 +38,7 @@ namespace CloudmersiveClient
 
                 var bytes = imageBytes;
 
-                var response = client.UploadData("https://api.cloudmersive.com/image/recognize/describe", "POST", bytes);
+                var response = client.UploadData("https://api.cloudmersive.com/virus/scan/file", "POST", bytes);
 
                 VirusScanResult result = JsonConvert.DeserializeObject<VirusScanResult>(System.Text.Encoding.ASCII.GetString(response));
 
