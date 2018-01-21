@@ -76,5 +76,19 @@ namespace CloudmersiveClientTestApp
             var outcome = client.RecognizeImageToDescription(path);
             txtOutput.Text = outcome.BestOutcome.Description;
         }
+
+        private void btnVirusScanFile_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (!dlg.ShowDialog().Value)
+                return;
+
+            string path = dlg.FileName;
+
+            CloudmersiveVirusScanClient client = new CloudmersiveVirusScanClient();
+
+            var outcome = client.ScanFile(path);
+            txtOutput.Text = outcome.BestOutcome.Description;
+        }
     }
 }
