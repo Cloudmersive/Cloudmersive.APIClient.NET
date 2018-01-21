@@ -1,6 +1,10 @@
-﻿using System;
+﻿using CloudmersiveClient.Validation;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,12 +22,12 @@ namespace CloudmersiveClient
             LoadApikeyFromConfig();
         }
 
-        public ImageDescriptionResponse ScanFile(string fileName)
+        public VirusScanResult ScanFile(string fileName)
         {
             return ScanFileBytes(File.ReadAllBytes(fileName));
         }
 
-        public ImageDescriptionResponse ScanFileBytes(byte[] imageBytes)
+        public VirusScanResult ScanFileBytes(byte[] imageBytes)
         {
             using (WebClient client = new WebClient())
             {
@@ -36,7 +40,7 @@ namespace CloudmersiveClient
 
                 var response = client.UploadData("https://api.cloudmersive.com/image/recognize/describe", "POST", bytes);
 
-                ImageDescriptionResponse result = JsonConvert.DeserializeObject<ImageDescriptionResponse>(System.Text.Encoding.ASCII.GetString(response));
+                VirusScanResult result = JsonConvert.DeserializeObject<VirusScanResult>(System.Text.Encoding.ASCII.GetString(response));
 
 
                 return result;
