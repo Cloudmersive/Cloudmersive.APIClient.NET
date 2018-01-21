@@ -17,5 +17,30 @@ namespace CloudmersiveClient
         {
             LoadApikeyFromConfig();
         }
+
+        public ImageDescriptionResponse ScanFile(string fileName)
+        {
+            return ScanFileBytes(File.ReadAllBytes(fileName));
+        }
+
+        public ImageDescriptionResponse ScanFileBytes(byte[] imageBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = imageBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/image/recognize/describe", "POST", bytes);
+
+                ImageDescriptionResponse result = JsonConvert.DeserializeObject<ImageDescriptionResponse>(System.Text.Encoding.ASCII.GetString(response));
+
+
+                return result;
+            }
+        }
     }
 }
