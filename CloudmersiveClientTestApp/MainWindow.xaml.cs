@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CloudmersiveClient;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 
 namespace CloudmersiveClientTestApp
 {
@@ -88,7 +89,7 @@ namespace CloudmersiveClientTestApp
             CloudmersiveVirusScanClient client = new CloudmersiveVirusScanClient();
 
             var outcome = client.ScanFile(path);
-            txtOutput.Text = outcome.BestOutcome.Description;
+            txtOutput.Text = JsonConvert.SerializeObject(outcome);
         }
     }
 }
