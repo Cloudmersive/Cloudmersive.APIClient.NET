@@ -103,14 +103,30 @@ namespace CloudmersiveClientTestApp
 
             ImageRecognitionAndProcessingClient client = new ImageRecognitionAndProcessingClient();
 
-            var outcome = client.CropToFirstFace(path);
+            System.Drawing.Image outcome = client.CropToFirstFace(path);
 
-            ImageSourceConverter c = new ImageSourceConverter();
-            ImageSource res =(ImageSource)c.ConvertFrom(outcome);
 
-            imgOutput.Source = res;
+            var imageSourceConverter = new ImageSourceConverter();
+            byte[] tempBitmap = BitmapToByte((System.Drawing.Bitmap) outcome);
+            ImageSource image = (ImageSource)imageSourceConverter.ConvertFrom(tempBitmap);
+
+            
+            imgOutput.Source = image;
         }
 
-        
+        private byte[] BitmapToByte(System.Drawing.Bitmap bitmap)
+        {
+            byte[] byteArray;
+            using (MemoryStream stream = new MemoryStream())
+            {
+                bitmap.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                stream.Close();
+
+                byteArray = stream.ToArray();
+            }
+            return byteArray;
+        }
+
+
     }
 }
