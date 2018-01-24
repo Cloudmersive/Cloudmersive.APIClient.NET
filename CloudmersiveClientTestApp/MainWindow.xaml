@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CloudmersiveClientTestApp"
         mc:Ignorable="d"
-        Title="Cloudmersive Client SDK Test App" Height="350" Width="525">
+        Title="Cloudmersive Client SDK Test App" Height="486.489" Width="525">
     <Grid>
         <Button Content="POS Tag" HorizontalAlignment="Left" Margin="214,134,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <TextBox x:Name="txtInput" HorizontalAlignment="Left" Height="78" Margin="22,38,0,0" TextWrapping="Wrap" Text="Neptune is the eighth and farthest known planet from the Sun in the Solar System. In the Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet." VerticalAlignment="Top" Width="267" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
@@ -20,6 +20,8 @@
         <Button x:Name="btnKeyUsage" Content="Key Usage" HorizontalAlignment="Left" Margin="432,289,0,0" VerticalAlignment="Top" Width="75" Click="btnKeyUsage_Click"/>
         <Button x:Name="btnRecognizeImage" Content="Recognize Image..." HorizontalAlignment="Left" Margin="348,134,0,0" VerticalAlignment="Top" Width="125" Click="btnRecognizeImage_Click"/>
         <Button x:Name="btnVirusScanFile" Content="Virus Scan File..." HorizontalAlignment="Left" Margin="348,174,0,0" VerticalAlignment="Top" Width="125" Click="btnVirusScanFile_Click"  />
+        <Image x:Name="imgOutput" HorizontalAlignment="Left" Height="132" Margin="22,305,0,0" VerticalAlignment="Top" Width="267"/>
+        <Button x:Name="btnFindFace" Click="btnFindFace_Click" Content="Find Face..." HorizontalAlignment="Left" Margin="348,212,0,0" VerticalAlignment="Top" Width="125"/>
 
     </Grid>
 </Window>

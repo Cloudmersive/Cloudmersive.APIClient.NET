@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,5 +92,25 @@ namespace CloudmersiveClientTestApp
             var outcome = client.ScanFile(path);
             txtOutput.Text = JsonConvert.SerializeObject(outcome);
         }
+
+        private void btnFindFace_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (!dlg.ShowDialog().Value)
+                return;
+
+            string path = dlg.FileName;
+
+            ImageRecognitionAndProcessingClient client = new ImageRecognitionAndProcessingClient();
+
+            var outcome = client.CropToFirstFace(path);
+
+            ImageSourceConverter c = new ImageSourceConverter();
+            ImageSource res =(ImageSource)c.ConvertFrom(outcome);
+
+            imgOutput.Source = res;
+        }
+
+        
     }
 }
