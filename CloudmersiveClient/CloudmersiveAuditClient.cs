@@ -26,11 +26,11 @@ namespace CloudmersiveClient
             using (WebClient client = new WebClient())
             {
                 client.Headers.Add("Apikey", Apikey);
-                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
 
 
 
-                var bytes = System.Text.Encoding.ASCII.GetBytes("=" + JsonConvert.SerializeObject(req)  );
+                var bytes = System.Text.Encoding.ASCII.GetBytes( JsonConvert.SerializeObject(req)  );
 
                 var response = client.UploadData("https://api.cloudmersive.com/audit/log/write-message-full", "POST", bytes);
 

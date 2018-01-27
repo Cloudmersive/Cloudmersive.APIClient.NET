@@ -127,6 +127,9 @@ namespace CloudmersiveClientTestApp
             req.AuditLogReferenceIP = GetLocalIPAddress();
             req.AuditLogMeta = dlg.FileName;
 
+            CloudmersiveValidationApiClient valid = new CloudmersiveValidationApiClient();
+            req.AuditLogReferenceLocation = JsonConvert.SerializeObject(valid.GeolocateIP(req.AuditLogReferenceIP));
+
             client2.WriteLogMessageFull(req);
         }
 
