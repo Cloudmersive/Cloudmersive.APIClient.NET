@@ -51,10 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CloudmersiveAuditClient.cs" />
     <Compile Include="CloudmersiveClient.cs" />
     <Compile Include="CloudmersiveNlpClient.cs" />
     <Compile Include="CloudmersiveValidationClient.cs" />
     <Compile Include="CloudmersiveVirusScanClient.cs" />
+    <Compile Include="Folder\Audit.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="ImageRecognitionAndProcessingClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
