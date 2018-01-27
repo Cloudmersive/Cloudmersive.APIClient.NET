@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CloudmersiveClient;
+using CloudmersiveClient.Audit;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 
@@ -101,6 +102,8 @@ namespace CloudmersiveClientTestApp
 
             string path = dlg.FileName;
 
+            // Process image
+
             ImageRecognitionAndProcessingClient client = new ImageRecognitionAndProcessingClient();
 
             System.Drawing.Image outcome = client.CropToFirstFace(path);
@@ -112,6 +115,30 @@ namespace CloudmersiveClientTestApp
 
             
             imgOutput.Source = image;
+
+            // Log success
+
+            CloudmersiveAuditClient client2 = new CloudmersiveAuditClient();
+
+            AuditLogWriteRequest req = new AuditLogWriteRequest();
+            req.AuditLogMessage = "Successfully processed image.";
+            req.AuditLogReferenceIP = GetLocalIPAddress();
+            req.AuditLogMeta = dlg.FileName;
+
+            client2.WriteLogMessageFull(req);
+        }
+
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
         private byte[] BitmapToByte(System.Drawing.Bitmap bitmap)

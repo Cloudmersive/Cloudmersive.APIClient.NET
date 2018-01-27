@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudmersiveClient.Folder
+namespace CloudmersiveClient.Audit
 {
     public class AuditLogWriteRequest
     {
