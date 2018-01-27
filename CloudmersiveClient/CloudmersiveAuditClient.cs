@@ -32,7 +32,7 @@ namespace CloudmersiveClient
 
                 var bytes = System.Text.Encoding.ASCII.GetBytes("=" + JsonConvert.SerializeObject(req)  );
 
-                var response = client.UploadData("https://api.cloudmersive.com/validate/email/address/full", "POST", bytes);
+                var response = client.UploadData("https://api.cloudmersive.com/audit/log/write-message-full", "POST", bytes);
 
                 string result = System.Text.Encoding.ASCII.GetString(response);
 
