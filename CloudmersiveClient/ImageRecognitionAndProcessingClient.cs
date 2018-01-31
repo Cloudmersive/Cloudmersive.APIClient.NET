@@ -1,4 +1,5 @@
-﻿using CloudmersiveClient.Validation;
+﻿using CloudmersiveClient.ImageProcessing;
+using CloudmersiveClient.Validation;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -75,5 +76,33 @@ namespace CloudmersiveClient
                 }
             }
         }
+
+
+        public NsfwResult NsfwClassification(string fileName)
+        {
+            return NsfwClassification(File.ReadAllBytes(fileName));
+        }
+
+        public NsfwResult NsfwClassification(byte[] imageBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = imageBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/image/nsfw/classify", "POST", bytes);
+
+                NsfwResult result = JsonConvert.DeserializeObject<NsfwResult>(System.Text.Encoding.ASCII.GetString(response));
+
+
+                return result;
+            }
+        }
+
+
     }
 }
