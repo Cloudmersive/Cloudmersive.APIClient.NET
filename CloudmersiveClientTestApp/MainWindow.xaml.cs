@@ -160,6 +160,18 @@ namespace CloudmersiveClientTestApp
             return byteArray;
         }
 
+        private void btnNsfw_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (!dlg.ShowDialog().Value)
+                return;
 
+            string path = dlg.FileName;
+
+            ImageRecognitionAndProcessingClient client = new ImageRecognitionAndProcessingClient();
+
+            var outcome = client.NsfwClassification(path);
+            txtOutput.Text = JsonConvert.SerializeObject(outcome);
+        }
     }
 }
