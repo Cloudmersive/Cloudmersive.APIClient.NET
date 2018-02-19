@@ -37,7 +37,7 @@ namespace CloudmersiveClient
             }
         }
 
-        public byte[] Document_PptxToPdf(byte[] docxBytes)
+        public byte[] Document_PptxToPdf(byte[] xlsxBytes)
         {
             using (WebClient client = new WebClient())
             {
@@ -46,9 +46,26 @@ namespace CloudmersiveClient
 
 
 
-                var bytes = docxBytes;
+                var bytes = xlsxBytes;
 
                 var response = client.UploadData("https://api.cloudmersive.com/convert/pptx/to/pdf", "POST", bytes);
+
+                return response;
+            }
+        }
+
+        public byte[] Document_XlsxToPdf(byte[] xlsxBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = xlsxBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/convert/xlsx/to/pdf", "POST", bytes);
 
                 return response;
             }
