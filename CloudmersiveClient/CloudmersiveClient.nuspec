@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Cloudmersive.APIClient.ClientSDK</id>
-    <version>1.32</version>
+    <version>1.33</version>
     <title>$title$</title>
     <authors>Cloudmersive</authors>
     <owners>$author$</owners>

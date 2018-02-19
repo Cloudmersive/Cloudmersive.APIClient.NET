@@ -33,11 +33,7 @@ namespace CloudmersiveClient
 
                 var response = client.UploadData("https://api.cloudmersive.com/convert/docx/to/pdf", "POST", bytes);
 
-                using (MemoryStream stream = new MemoryStream(response))
-                {
-
-                    return stream.GetBuffer();
-                }
+                return response;
             }
         }
     }
