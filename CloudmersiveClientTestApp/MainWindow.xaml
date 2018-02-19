@@ -23,6 +23,7 @@
         <Image x:Name="imgOutput" HorizontalAlignment="Left" Height="132" Margin="22,305,0,0" VerticalAlignment="Top" Width="267"/>
         <Button x:Name="btnFindFace" Click="btnFindFace_Click" Content="Find Face..." HorizontalAlignment="Left" Margin="348,212,0,0" VerticalAlignment="Top" Width="125"/>
         <Button x:Name="btnNsfw" Content="NSFW Scan Image..." HorizontalAlignment="Left" Margin="348,247,0,0" VerticalAlignment="Top" Width="125" Click="btnNsfw_Click"/>
+        <Button x:Name="btnToPDF" Content="Office Document to PDF..." HorizontalAlignment="Left" Margin="136,338,0,0" VerticalAlignment="Top" Width="182" Click="btnToPDF_Click"/>
 
     </Grid>
 </Window>

@@ -173,5 +173,21 @@ namespace CloudmersiveClientTestApp
             var outcome = client.NsfwClassification(path);
             txtOutput.Text = JsonConvert.SerializeObject(outcome);
         }
+
+        private void btnToPDF_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (!dlg.ShowDialog().Value)
+                return;
+
+            string path = dlg.FileName;
+
+            CloudmersiveConvertClient client = new CloudmersiveConvertClient();
+
+            var outcome = client.Document_AutodetectToPdf(File.ReadAllBytes(dlg.FileName), System.IO.Path.GetFileName(dlg.FileName) );
+            string output = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + ".pdf");
+
+            File.WriteAllBytes(output, outcome);
+        }
     }
 }
