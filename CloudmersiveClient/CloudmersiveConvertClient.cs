@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,21 +72,19 @@ namespace CloudmersiveClient
             }
         }
 
-        public byte[] Document_AutodetectToPdf(byte[] xlsxBytes)
+        public byte[] Document_AutodetectToPdf(byte[] xlsxBytes, string fileName)
         {
-            using (WebClient client = new WebClient())
-            {
-                client.Headers.Add("Apikey", Apikey);
-                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
 
+            form.Add(new ByteArrayContent(xlsxBytes, 0, xlsxBytes.Length), "inputFile", fileName);
+            HttpResponseMessage response = httpClient.PostAsync("https://api.cloudmersive.com/convert/autodetect/to/pdf", form).Result;
 
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
+            var sd = response.Content.ReadAsByteArrayAsync().Result;// ReadAsStringAsync().Result;
 
-                var bytes = xlsxBytes;
-
-                var response = client.UploadData("https://api.cloudmersive.com/convert/autodetect/to/pdf", "POST", bytes);
-
-                return response;
-            }
+            return sd;
         }
     }
 }
