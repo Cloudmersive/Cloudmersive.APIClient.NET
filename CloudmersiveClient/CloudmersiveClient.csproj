@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="CloudmersiveAuditClient.cs" />
     <Compile Include="CloudmersiveClient.cs" />
+    <Compile Include="CloudmersiveConvertClient.cs" />
     <Compile Include="CloudmersiveNlpClient.cs" />
     <Compile Include="CloudmersiveValidationClient.cs" />
     <Compile Include="CloudmersiveVirusScanClient.cs" />
