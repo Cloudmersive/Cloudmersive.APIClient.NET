@@ -72,12 +72,12 @@ namespace CloudmersiveClient
             }
         }
 
-        public byte[] Document_AutodetectToPdf(byte[] xlsxBytes, string fileName)
+        public byte[] Document_AutodetectToPdf(byte[] inputBytes, string fileName)
         {
             HttpClient httpClient = new HttpClient();
             MultipartFormDataContent form = new MultipartFormDataContent();
 
-            form.Add(new ByteArrayContent(xlsxBytes, 0, xlsxBytes.Length), "inputFile", fileName);
+            form.Add(new ByteArrayContent(inputBytes, 0, inputBytes.Length), "inputFile", fileName);
 
             httpClient.DefaultRequestHeaders.Add("Apikey", Apikey);
 
@@ -88,6 +88,11 @@ namespace CloudmersiveClient
             var sd = response.Content.ReadAsByteArrayAsync().Result;// ReadAsStringAsync().Result;
 
             return sd;
+        }
+
+        public byte[] Document_AutodetectToPdf(string filePath)
+        {
+            return Document_AutodetectToPdf(File.ReadAllBytes(filePath), Path.GetFileName(filePath));
         }
     }
 }
