@@ -70,5 +70,22 @@ namespace CloudmersiveClient
                 return response;
             }
         }
+
+        public byte[] Document_AutodetectToPdf(byte[] xlsxBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = xlsxBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/convert/autodetect/to/pdf", "POST", bytes);
+
+                return response;
+            }
+        }
     }
 }
