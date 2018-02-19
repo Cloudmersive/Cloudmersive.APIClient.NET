@@ -78,6 +78,9 @@ namespace CloudmersiveClient
             MultipartFormDataContent form = new MultipartFormDataContent();
 
             form.Add(new ByteArrayContent(xlsxBytes, 0, xlsxBytes.Length), "inputFile", fileName);
+
+            httpClient.DefaultRequestHeaders.Add("Apikey", Apikey);
+
             HttpResponseMessage response = httpClient.PostAsync("https://api.cloudmersive.com/convert/autodetect/to/pdf", form).Result;
 
             response.EnsureSuccessStatusCode();
