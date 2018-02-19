@@ -36,5 +36,22 @@ namespace CloudmersiveClient
                 return response;
             }
         }
+
+        public byte[] Document_PptxToPdf(byte[] docxBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = docxBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/convert/pptx/to/pdf", "POST", bytes);
+
+                return response;
+            }
+        }
     }
 }
