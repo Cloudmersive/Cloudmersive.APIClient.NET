@@ -94,5 +94,25 @@ namespace CloudmersiveClient
         {
             return Document_AutodetectToPdf(File.ReadAllBytes(filePath), Path.GetFileName(filePath));
         }
+
+        public byte[] Image(byte[] inputBytes, string fileName, string outputFileType)
+        {
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
+
+            form.Add(new ByteArrayContent(inputBytes, 0, inputBytes.Length), "inputFile", fileName);
+
+            httpClient.DefaultRequestHeaders.Add("Apikey", Apikey);
+
+            string format1 = Path.GetExtension(fileName).Replace(".", "");
+
+            HttpResponseMessage response = httpClient.PostAsync("https://api.cloudmersive.com/convert/image/" + format1 + "/to/" + outputFileType, form).Result;
+
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
+            var sd = response.Content.ReadAsByteArrayAsync().Result;// ReadAsStringAsync().Result;
+
+            return sd;
+        }
     }
 }
