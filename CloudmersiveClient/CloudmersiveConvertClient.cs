@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CloudmersiveClient.Convert;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -107,6 +109,29 @@ namespace CloudmersiveClient
             string format1 = Path.GetExtension(fileName).Replace(".", "");
 
             HttpResponseMessage response = httpClient.PostAsync("https://api.cloudmersive.com/convert/image/" + format1 + "/to/" + outputFileType, form).Result;
+
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
+            var sd = response.Content.ReadAsByteArrayAsync().Result;// ReadAsStringAsync().Result;
+
+            return sd;
+        }
+
+        public byte[] WebScreenshot(ScreenshotRequest req)
+        {
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
+
+            //form.Add(new ByteArrayContent(inputBytes, 0, inputBytes.Length), "inputFile", fileName);
+            
+
+            httpClient.DefaultRequestHeaders.Add("Apikey", Apikey);
+
+            string stringPayload = JsonConvert.SerializeObject(req);
+
+            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = httpClient.PostAsync("https://api.cloudmersive.com/convert/web/url/to/screenshot", stringPayload).Result;
 
             response.EnsureSuccessStatusCode();
             httpClient.Dispose();

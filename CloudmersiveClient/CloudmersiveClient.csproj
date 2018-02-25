@@ -58,6 +58,7 @@
     <Compile Include="CloudmersiveValidationClient.cs" />
     <Compile Include="CloudmersiveVirusScanClient.cs" />
     <Compile Include="Audit\Audit.cs" />
+    <Compile Include="Convert\ScreenshotRequest.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="ImageProcessing\NsfwResult.cs" />
     <Compile Include="ImageRecognitionAndProcessingClient.cs" />
