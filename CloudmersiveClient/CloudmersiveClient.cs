@@ -26,7 +26,7 @@ namespace CloudmersiveClient
                 
                 var response = client.DownloadString("https://api.cloudmersive.com/nlp/apikeyusage/" + Apikey);
 
-                return Convert.ToInt64(response);
+                return System.Convert.ToInt64(response);
             }
         }
 

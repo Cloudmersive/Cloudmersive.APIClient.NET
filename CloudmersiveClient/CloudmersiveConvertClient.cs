@@ -131,7 +131,7 @@ namespace CloudmersiveClient
 
             var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = httpClient.PostAsync("https://api.cloudmersive.com/convert/web/url/to/screenshot", stringPayload).Result;
+            HttpResponseMessage response = httpClient.PostAsync("https://api.cloudmersive.com/convert/web/url/to/screenshot", httpContent).Result;
 
             response.EnsureSuccessStatusCode();
             httpClient.Dispose();
