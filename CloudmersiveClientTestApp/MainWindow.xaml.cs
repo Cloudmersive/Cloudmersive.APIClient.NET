@@ -189,5 +189,21 @@ namespace CloudmersiveClientTestApp
 
             File.WriteAllBytes(output, outcome);
         }
+
+        private void btnExcelToCSV_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (!dlg.ShowDialog().Value)
+                return;
+
+            string path = dlg.FileName;
+
+            CloudmersiveConvertClient client = new CloudmersiveConvertClient();
+
+            var outcome = client.Document_XlsxToCsv(File.ReadAllBytes(dlg.FileName));
+            string output = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + ".csv");
+
+            File.WriteAllBytes(output, outcome);
+        }
     }
 }
