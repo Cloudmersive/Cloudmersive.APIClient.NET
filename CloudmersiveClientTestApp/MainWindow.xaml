@@ -25,7 +25,7 @@
         <Button x:Name="btnNsfw" Content="NSFW Scan Image..." HorizontalAlignment="Left" Margin="348,247,0,0" VerticalAlignment="Top" Width="125" Click="btnNsfw_Click"/>
         <Button x:Name="btnToPDF" Content="Office Document to PDF..." HorizontalAlignment="Left" Margin="136,338,0,0" VerticalAlignment="Top" Width="182" Click="btnToPDF_Click"/>
         <Button x:Name="btnExcelToCSV" Content="Excel to CSV..." HorizontalAlignment="Left" Margin="136,370,0,0" VerticalAlignment="Top" Width="182" Click="btnExcelToCSV_Click"/>
-        <Button x:Name="btnCSVtoJSON" Content="CSV to JSON..." HorizontalAlignment="Left" Margin="136,419,0,0" VerticalAlignment="Top" Width="188"/>
+        <Button x:Name="btnCSVtoJSON" Content="CSV to JSON..." HorizontalAlignment="Left" Margin="136,419,0,0" VerticalAlignment="Top" Width="188" Click="btnCSVtoJSON_Click"/>
 
     </Grid>
 </Window>
