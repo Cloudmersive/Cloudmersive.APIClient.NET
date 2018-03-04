@@ -74,6 +74,23 @@ namespace CloudmersiveClient
             }
         }
 
+        public byte[] Document_XlsxToCsv(byte[] xlsxBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = xlsxBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/convert/xlsx/to/csv", "POST", bytes);
+
+                return response;
+            }
+        }
+
         public byte[] Document_AutodetectToPdf(byte[] inputBytes, string fileName)
         {
             HttpClient httpClient = new HttpClient();
