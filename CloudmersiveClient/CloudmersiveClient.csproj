@@ -58,6 +58,8 @@
     <Compile Include="CloudmersiveValidationClient.cs" />
     <Compile Include="CloudmersiveVirusScanClient.cs" />
     <Compile Include="Audit\Audit.cs" />
+    <Compile Include="Convert\HtmlTemplateApplicationRequest.cs" />
+    <Compile Include="Convert\HtmlTemplateApplicationResponse.cs" />
     <Compile Include="Convert\ScreenshotRequest.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="ImageProcessing\NsfwResult.cs" />
