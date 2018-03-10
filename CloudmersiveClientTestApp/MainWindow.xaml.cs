@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CloudmersiveClient;
 using CloudmersiveClient.Audit;
+using CloudmersiveClient.Convert;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 
@@ -220,6 +221,17 @@ namespace CloudmersiveClientTestApp
             string output = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + ".json");
 
             File.WriteAllText(output, outcome);
+        }
+
+        private void btnScreenshot_Click(object sender, RoutedEventArgs e)
+        {
+            CloudmersiveConvertClient client = new CloudmersiveConvertClient();
+
+            ScreenshotRequest req = new ScreenshotRequest();
+
+            req.Url = "http://kaycircle.com";
+
+            client.WebScreenshot(req);
         }
     }
 }
