@@ -17,6 +17,11 @@ namespace CloudmersiveClient.Convert
         public string HtmlTemplate;
 
         /// <summary>
+        /// URL to HTML template input
+        /// </summary>
+        public string HtmlTemplateUrl;
+
+        /// <summary>
         /// Operations to apply to this template
         /// </summary>
         public HtmlTemplateOperation[] Operations;
