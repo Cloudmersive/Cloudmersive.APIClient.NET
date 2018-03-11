@@ -198,5 +198,26 @@ namespace CloudmersiveClient
                 return result;
             }
         }
+
+        public string XmlToJson(byte[] inputBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = inputBytes; // System.Text.Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(input));
+
+                var response = client.UploadData("https://api.cloudmersive.com/convert/xml/to/json", "POST", bytes);
+
+                string result = System.Text.Encoding.ASCII.GetString(response);
+
+
+
+                return result;
+            }
+        }
     }
 }
