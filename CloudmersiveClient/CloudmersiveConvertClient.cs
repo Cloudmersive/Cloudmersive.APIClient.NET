@@ -162,11 +162,11 @@ namespace CloudmersiveClient
             using (WebClient client = new WebClient())
             {
                 client.Headers.Add("Apikey", Apikey);
-                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
 
 
-
-                var bytes = System.Text.Encoding.ASCII.GetBytes( JsonConvert.SerializeObject(input)  );
+                string info = JsonConvert.SerializeObject(input);
+                var bytes = System.Text.Encoding.ASCII.GetBytes( info );
 
                 var response = client.UploadData("https://api.cloudmersive.com/convert/template/html/apply", "POST", bytes);
 
