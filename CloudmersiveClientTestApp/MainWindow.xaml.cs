@@ -233,5 +233,25 @@ namespace CloudmersiveClientTestApp
 
             client.WebScreenshot(req);
         }
+
+        private void btnTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            CloudmersiveConvertClient client = new CloudmersiveConvertClient();
+
+            HtmlTemplateApplicationRequest req = new HtmlTemplateApplicationRequest();
+            req.HtmlTemplateUrl = "https://cloudmersive.com/email/welcome/welcome.html";
+
+            HtmlTemplateOperation op = new HtmlTemplateOperation();
+            op.Action = HtmlTemplateOperationAction.Replace;
+            op.MatchAgsint = "#FirstName#";
+            op.ReplaceWith = "Jon Smith";
+
+            req.Operations = new HtmlTemplateOperation[] { op };
+            
+
+            var result = client.ApplyHtmlTemplate(req);
+
+            Console.WriteLine(result.FinalHtml);
+        }
     }
 }
