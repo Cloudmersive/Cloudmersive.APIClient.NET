@@ -23,6 +23,29 @@ namespace CloudmersiveClient
             LoadApikeyFromConfig();
         }
 
+        public byte[] Web_UrlToPdf(ScreenshotRequest req)
+        {
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
+
+            //form.Add(new ByteArrayContent(inputBytes, 0, inputBytes.Length), "inputFile", fileName);
+
+
+            httpClient.DefaultRequestHeaders.Add("Apikey", Apikey);
+
+            string stringPayload = JsonConvert.SerializeObject(req);
+
+            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = httpClient.PostAsync("https://api.cloudmersive.com/convert/web/url/to/pdf", httpContent).Result;
+
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
+            var sd = response.Content.ReadAsByteArrayAsync().Result;// ReadAsStringAsync().Result;
+
+            return sd;
+        }
+
         public byte[] Document_DocxToPdf(byte[] docxBytes)
         {
             using (WebClient client = new WebClient())
