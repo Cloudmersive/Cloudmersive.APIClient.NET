@@ -68,6 +68,7 @@
     <Compile Include="Validation\GeolocateResponse.cs" />
     <Compile Include="Validation\ImageRecognitionResponse.cs" />
     <Compile Include="Validation\VatLookupRequest.cs" />
+    <Compile Include="Validation\VatLookupResponse.cs" />
     <Compile Include="Validation\VirusScanResult.cs" />
     <Compile Include="Validation\WhoisResponse.cs" />
   </ItemGroup>

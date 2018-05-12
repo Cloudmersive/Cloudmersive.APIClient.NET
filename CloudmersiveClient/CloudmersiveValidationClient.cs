@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -94,20 +95,31 @@ namespace CloudmersiveClient
         {
             using (WebClient client = new WebClient())
             {
-                client.Headers.Add("Apikey", Apikey);
-                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+                HttpClient httpClient = new HttpClient();
+                MultipartFormDataContent form = new MultipartFormDataContent();
+
+                //form.Add(new ByteArrayContent(inputBytes, 0, inputBytes.Length), "inputFile", fileName);
+
+
+                httpClient.DefaultRequestHeaders.Add("Apikey", Apikey);
+
+                string stringPayload = JsonConvert.SerializeObject(lookup);
+
+                var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = httpClient.PostAsync(
+                    "https://api.cloudmersive.com/validate/vat/lookup", httpContent).Result;
+
+                response.EnsureSuccessStatusCode();
+                httpClient.Dispose();
+                var sd = response.Content.ReadAsStringAsync().Result;// ReadAsStringAsync().Result;
 
 
 
-                var bytes = System.Text.Encoding.ASCII.GetBytes("=" + domain);
 
-                var response = client.UploadData("https://api.cloudmersive.com/validate/vat/lookup", "POST", bytes);
-
-                string result = System.Text.Encoding.ASCII.GetString(response);
-
-
-
-                return JsonConvert.DeserializeObject<VatLookupResponse>(result);
+                return JsonConvert.DeserializeObject<VatLookupResponse>(sd);
             }
         }
     }

@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using CloudmersiveClient;
 using CloudmersiveClient.Audit;
 using CloudmersiveClient.Convert;
+using CloudmersiveClient.Validation;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 
@@ -252,6 +253,18 @@ namespace CloudmersiveClientTestApp
             var result = client.ApplyHtmlTemplate(req);
 
             Console.WriteLine(result.FinalHtml);
+        }
+
+        private void btnVATLookup_Click(object sender, RoutedEventArgs e)
+        {
+            CloudmersiveValidationApiClient client = new CloudmersiveValidationApiClient();
+
+            VatLookupRequest req = new VatLookupRequest();
+            req.VatCode = txtVAT.Text;
+
+            VatLookupResponse response = client.VatLookup(req);
+
+            txtOutput.Text = JsonConvert.SerializeObject(response);
         }
     }
 }
