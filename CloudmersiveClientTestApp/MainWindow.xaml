@@ -30,6 +30,7 @@
         <Button x:Name="btnTemplate" Click="btnTemplate_Click"  Content="Template Test" HorizontalAlignment="Left" Margin="332,370,0,0" VerticalAlignment="Top" Width="133"/>
         <TextBox x:Name="txtVAT" HorizontalAlignment="Left" Height="23" Margin="520,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnVATLookup" Content="VAT Lookup" HorizontalAlignment="Left" Margin="520,70,0,0" VerticalAlignment="Top" Width="75" Click="btnVATLookup_Click"/>
+        <Button x:Name="btnIPLookup" Content="IP Lookup" HorizontalAlignment="Left" Margin="520,96,0,0" VerticalAlignment="Top" Width="75" Click="btnIPLookup_Click"/>
 
     </Grid>
 </Window>

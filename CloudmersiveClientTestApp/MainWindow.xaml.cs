@@ -266,5 +266,14 @@ namespace CloudmersiveClientTestApp
 
             txtOutput.Text = JsonConvert.SerializeObject(response);
         }
+
+        private void btnIPLookup_Click(object sender, RoutedEventArgs e)
+        {
+            CloudmersiveValidationApiClient client = new CloudmersiveValidationApiClient();
+
+            var response = client.GeolocateIP(txtVAT.Text);
+
+            txtOutput.Text = JsonConvert.SerializeObject(response);
+        }
     }
 }
