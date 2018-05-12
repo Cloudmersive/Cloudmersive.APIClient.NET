@@ -89,5 +89,26 @@ namespace CloudmersiveClient
                 return JsonConvert.DeserializeObject<WhoisResponse>(result);
             }
         }
+
+        public VatLookupResponse VatLookup(VatLookupRequest lookup)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = System.Text.Encoding.ASCII.GetBytes("=" + domain);
+
+                var response = client.UploadData("https://api.cloudmersive.com/validate/vat/lookup", "POST", bytes);
+
+                string result = System.Text.Encoding.ASCII.GetString(response);
+
+
+
+                return JsonConvert.DeserializeObject<VatLookupResponse>(result);
+            }
+        }
     }
 }
