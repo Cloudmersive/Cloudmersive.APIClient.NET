@@ -275,5 +275,43 @@ namespace CloudmersiveClientTestApp
 
             txtOutput.Text = JsonConvert.SerializeObject(response);
         }
+
+        private void btnConvertToPainting_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (!dlg.ShowDialog().Value)
+                return;
+
+            string path = dlg.FileName;
+
+            // Process image
+
+            ImageRecognitionAndProcessingClient client = new ImageRecognitionAndProcessingClient();
+
+            System.Drawing.Image outcome = client.ConvertToPainting( File.ReadAllBytes( path ));
+
+
+            var imageSourceConverter = new ImageSourceConverter();
+            byte[] tempBitmap = BitmapToByte((System.Drawing.Bitmap)outcome);
+            ImageSource image = (ImageSource)imageSourceConverter.ConvertFrom(tempBitmap);
+
+
+            imgOutput.Source = image;
+
+            // Log success
+
+            CloudmersiveAuditClient client2 = new CloudmersiveAuditClient();
+
+            AuditLogWriteRequest req = new AuditLogWriteRequest();
+            req.AuditLogMessage = "Successfully processed image.";
+            req.AuditLogReferenceIP = GetLocalIPAddress();
+            req.AuditLogMeta = dlg.FileName;
+
+            CloudmersiveValidationApiClient valid = new CloudmersiveValidationApiClient();
+            var geo = valid.GeolocateIP(req.AuditLogReferenceIP);
+            req.AuditLogReferenceLocation = JsonConvert.SerializeObject(geo);
+
+            client2.WriteLogMessageFull(req);
+        }
     }
 }
