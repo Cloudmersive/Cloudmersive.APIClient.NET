@@ -78,6 +78,31 @@ namespace CloudmersiveClient
         }
 
 
+        public Image ConvertToPainting(byte[] imageBytes, string style = "udnie")
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = imageBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/image/artistic/painting/" + style, 
+                    "POST", bytes);
+
+                using (MemoryStream stream = new MemoryStream(response))
+                {
+
+                    Image img = Image.FromStream(stream);
+
+                    return img;
+                }
+            }
+        }
+
+
         public NsfwResult NsfwClassification(string fileName)
         {
             return NsfwClassification(File.ReadAllBytes(fileName));
