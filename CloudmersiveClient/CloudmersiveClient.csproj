@@ -62,7 +62,9 @@
     <Compile Include="Convert\HtmlTemplateApplicationResponse.cs" />
     <Compile Include="Convert\ScreenshotRequest.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="ImageProcessing\DrawRectangleRequest.cs" />
     <Compile Include="ImageProcessing\NsfwResult.cs" />
+    <Compile Include="ImageProcessing\ObjectDetectionResult.cs" />
     <Compile Include="ImageRecognitionAndProcessingClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\GeolocateResponse.cs" />

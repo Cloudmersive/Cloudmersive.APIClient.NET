@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using CloudmersiveClient;
 using CloudmersiveClient.Audit;
 using CloudmersiveClient.Convert;
+using CloudmersiveClient.ImageProcessing;
 using CloudmersiveClient.Validation;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -312,6 +313,54 @@ namespace CloudmersiveClientTestApp
             req.AuditLogReferenceLocation = JsonConvert.SerializeObject(geo);
 
             client2.WriteLogMessageFull(req);
+        }
+
+        private void btnDetectObjects_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (!dlg.ShowDialog().Value)
+                return;
+
+            string path = dlg.FileName;
+
+            // Process image
+
+            var imageSourceConverter = new ImageSourceConverter();
+            ImageRecognitionAndProcessingClient client = new ImageRecognitionAndProcessingClient();
+
+            var objects = client.DetectObjects(File.ReadAllBytes(path));
+            System.Drawing.Image outcome = System.Drawing.Image.FromFile(dlg.FileName);
+
+            foreach (var obj in objects.Objects)
+            {
+                DrawRectangleRequest req = new DrawRectangleRequest();
+
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    outcome.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                    req.BaseImageBytes = stream.ToArray();
+
+                    DrawRectangleInstance instance = new DrawRectangleInstance();
+
+                    instance.BorderColor = "red";
+                    instance.BorderWidth = 5;
+                    instance.X = obj.X;
+                    instance.Y = obj.Y;
+                    instance.Width = obj.Width;
+                    instance.Height = obj.Height;
+
+                    req.RectanglesToDraw = new DrawRectangleInstance[] { instance };
+
+                    outcome = client.DrawRectangles(req);
+                }
+            }
+
+            
+            byte[] tempBitmap = BitmapToByte((System.Drawing.Bitmap)outcome);
+            ImageSource image = (ImageSource)imageSourceConverter.ConvertFrom(tempBitmap);
+
+
+            imgOutput.Source = image;
         }
     }
 }

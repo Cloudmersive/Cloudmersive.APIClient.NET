@@ -32,6 +32,7 @@
         <Button x:Name="btnVATLookup" Content="VAT Lookup" HorizontalAlignment="Left" Margin="520,70,0,0" VerticalAlignment="Top" Width="75" Click="btnVATLookup_Click"/>
         <Button x:Name="btnIPLookup" Content="IP Lookup" HorizontalAlignment="Left" Margin="520,96,0,0" VerticalAlignment="Top" Width="75" Click="btnIPLookup_Click"/>
         <Button x:Name="btnConvertToPainting" Content="Convert to Painting" HorizontalAlignment="Left" Margin="498,174,0,0" VerticalAlignment="Top" Width="130" Click="btnConvertToPainting_Click"/>
+        <Button x:Name="btnDetectObjects" Content="Detect Objects" HorizontalAlignment="Left" Margin="498,212,0,0" VerticalAlignment="Top" Width="130" Click="btnDetectObjects_Click"/>
 
     </Grid>
 </Window>
