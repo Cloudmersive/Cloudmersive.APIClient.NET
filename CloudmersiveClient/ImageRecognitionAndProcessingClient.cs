@@ -134,7 +134,7 @@ namespace CloudmersiveClient
 
                 string url = "https://api.cloudmersive.com/image/edit/draw/rectangle";
 
-                url = "http://localhost:64058/image/edit/draw/rectangle";
+                //url = "http://localhost:64058/image/edit/draw/rectangle";
 
                 string strInput =  JsonConvert.SerializeObject(request);
 
