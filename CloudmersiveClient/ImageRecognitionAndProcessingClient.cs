@@ -153,7 +153,7 @@ namespace CloudmersiveClient
             }
         }
 
-        public Image DrawRectangles(DrawTextRequest request)
+        public Image DrawText(DrawTextRequest request)
         {
             using (WebClient client = new WebClient())
             {
