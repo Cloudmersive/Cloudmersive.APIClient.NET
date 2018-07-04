@@ -131,13 +131,19 @@ namespace CloudmersiveClient
             using (WebClient client = new WebClient())
             {
                 client.Headers.Add("Apikey", Apikey);
-                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
 
+                string url = "https://api.cloudmersive.com/image/edit/draw/rectangle";
 
-                var response = client.UploadData("https://api.cloudmersive.com/image/edit/draw/rectangle",
-                    "POST", Encoding.UTF8.GetBytes( JsonConvert.SerializeObject(request) ) );
+                url = "http://localhost:64058/image/edit/draw/rectangle";
 
-                using (MemoryStream stream = new MemoryStream(response))
+                string strInput =  JsonConvert.SerializeObject(request);
+
+                client.Headers.Add("Content-Type", "application/json");
+
+                var response = client.UploadData(url,
+                    "POST", System.Text.Encoding.ASCII.GetBytes(strInput)  );
+
+                using (MemoryStream stream = new MemoryStream(/*Encoding.UTF8.GetBytes*/(response)))
                 {
 
                     Image img = Image.FromStream(stream);
