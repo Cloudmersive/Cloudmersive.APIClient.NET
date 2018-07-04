@@ -104,6 +104,28 @@ namespace CloudmersiveClient
 
 
 
+        public ObjectDetectionResult DetectObjects(byte[] imageBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = imageBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/image/recognize/detect-objects",
+                    "POST", bytes);
+
+                string strResult = Encoding.UTF8.GetString(response);
+
+                return JsonConvert.DeserializeObject<ObjectDetectionResult>(strResult);
+            }
+        }
+
+
+
         public Image DrawRectangles(DrawRectangleRequest request)
         {
             using (WebClient client = new WebClient())
