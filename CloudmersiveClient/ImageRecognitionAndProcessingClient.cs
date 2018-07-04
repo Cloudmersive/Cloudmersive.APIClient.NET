@@ -103,6 +103,29 @@ namespace CloudmersiveClient
         }
 
 
+
+        public Image DrawRectangles(DrawRectangleRequest request)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+                var response = client.UploadData("https://api.cloudmersive.com/image/edit/draw/rectangle",
+                    "POST", Encoding.UTF8.GetBytes( JsonConvert.SerializeObject(request) ) );
+
+                using (MemoryStream stream = new MemoryStream(response))
+                {
+
+                    Image img = Image.FromStream(stream);
+
+                    return img;
+                }
+            }
+        }
+
+
         public NsfwResult NsfwClassification(string fileName)
         {
             return NsfwClassification(File.ReadAllBytes(fileName));
