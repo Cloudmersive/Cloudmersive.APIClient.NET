@@ -63,6 +63,7 @@
     <Compile Include="Convert\ScreenshotRequest.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="ImageProcessing\DrawRectangleRequest.cs" />
+    <Compile Include="ImageProcessing\DrawTextRequest.cs" />
     <Compile Include="ImageProcessing\NsfwResult.cs" />
     <Compile Include="ImageProcessing\ObjectDetectionResult.cs" />
     <Compile Include="ImageRecognitionAndProcessingClient.cs" />
