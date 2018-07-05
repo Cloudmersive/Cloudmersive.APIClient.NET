@@ -124,6 +124,24 @@ namespace CloudmersiveClient
             }
         }
 
+        public byte[] Resize(byte[] imageBytes, int maxWidth, int maxHeight)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = imageBytes;
+
+                var response = client.UploadData(
+                    "https://api.cloudmersive.com/image/resize/preserveAspectRatio/" + maxWidth + "/" + maxHeight, "POST", bytes);
+
+                return response;
+            }
+        }
+
 
 
         public Image DrawRectangles(DrawRectangleRequest request)
@@ -161,7 +179,7 @@ namespace CloudmersiveClient
 
                 string url = "https://api.cloudmersive.com/image/edit/draw/text";
 
-                //url = "http://localhost:64058/image/edit/draw/rectangle";
+                //url = "http://localhost:64058/image/edit/draw/text";
 
                 string strInput = JsonConvert.SerializeObject(request);
 
