@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -126,20 +127,35 @@ namespace CloudmersiveClient
 
         public byte[] Resize(byte[] imageBytes, int maxWidth, int maxHeight)
         {
-            using (WebClient client = new WebClient())
-            {
-                client.Headers.Add("Apikey", Apikey);
-                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+            HttpClient httpClient = new HttpClient();
+
+            httpClient.DefaultRequestHeaders.Add("Apikey", Apikey);
+
+            MultipartFormDataContent form = new MultipartFormDataContent();
+
+            form.Add(new ByteArrayContent(imageBytes), "input", "input");
+            HttpResponseMessage response = httpClient.PostAsync(
+                "https://api.cloudmersive.com/image/resize/preserveAspectRatio/" + maxWidth + "/" + maxHeight, form).Result;
+
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
+            return response.Content.ReadAsByteArrayAsync().Result; //  .ReadAsStringAsync().Result;
+
+
+            //using (WebClient client = new WebClient())
+            //{
+            //    client.Headers.Add("Apikey", Apikey);
+            //    client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
 
 
 
-                var bytes = imageBytes;
+            //    var bytes = imageBytes;
 
-                var response = client.UploadData(
-                    "https://api.cloudmersive.com/image/resize/preserveAspectRatio/" + maxWidth + "/" + maxHeight, "POST", bytes);
+            //    var response = client.UploadData(
+            //        "https://api.cloudmersive.com/image/resize/preserveAspectRatio/" + maxWidth + "/" + maxHeight, "POST", bytes);
 
-                return response;
-            }
+            //    return response;
+            //}
         }
 
 
