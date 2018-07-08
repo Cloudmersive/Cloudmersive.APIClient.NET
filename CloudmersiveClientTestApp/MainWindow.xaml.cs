@@ -403,5 +403,12 @@ namespace CloudmersiveClientTestApp
 
             client2.WriteLogMessageFull(req);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            CloudmersiveNlpApiClient client = new CloudmersiveNlpApiClient();
+
+            txtOutput.Text = JsonConvert.SerializeObject( client.DetectLanguage(txtInput.Text) );
+        }
     }
 }

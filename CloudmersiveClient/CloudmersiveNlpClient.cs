@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -83,5 +84,44 @@ namespace CloudmersiveClient
                 return result;
             }
         }
+
+        public LanguageDetectionResponse DetectLanguage(string input)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = System.Text.Encoding.ASCII.GetBytes("=" + input);
+
+                var response = client.UploadData("https://api.cloudmersive.com/nlp/language/detect", "POST", bytes);
+
+                string result = System.Text.Encoding.ASCII.GetString(response);
+
+                result = Helpers.DecodeEscapedStrings(result);
+
+                return JsonConvert.DeserializeObject< LanguageDetectionResponse>( result );
+            }
+        }
+    }
+
+    public class LanguageDetectionResponse
+    {
+        /// <summary>
+        /// True if the language detection operation was successful, false otherwise
+        /// </summary>
+        public bool Successful { get; set; }
+
+        /// <summary>
+        /// ISO 639 three letter language code
+        /// </summary>
+        public string DetectedLanguage_ThreeLetterCode { get; set; }
+
+        /// <summary>
+        /// The full name (in English) of the detected language
+        /// </summary>
+        public string DetectedLanguage_FullName { get; set; }
     }
 }
