@@ -49,6 +49,38 @@ namespace CloudmersiveClient
             }
         }
 
+        public AddressVerifySyntaxOnlyResponse ValidateEmailAddress_SyntaxOnly(string emailAddress)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = System.Text.Encoding.ASCII.GetBytes("=" + emailAddress);
+
+                var response = client.UploadData("https://api.cloudmersive.com/validate/email/address/syntaxOnly", "POST", bytes);
+
+                string result = System.Text.Encoding.ASCII.GetString(response);
+
+
+
+                return JsonConvert.DeserializeObject<AddressVerifySyntaxOnlyResponse>(result);
+            }
+        }
+
+        /// <summary>
+        /// Syntactic validity of email address
+        /// </summary>
+        public class AddressVerifySyntaxOnlyResponse
+        {
+            /// <summary>
+            /// True if the email address is syntactically valid, false if it is not
+            /// </summary>
+            public bool ValidAddress { get; set; }
+        }
+
         public GeolocateIPResponse GeolocateIP(string ip)
         {
             using (WebClient client = new WebClient())
