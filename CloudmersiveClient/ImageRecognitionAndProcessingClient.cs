@@ -78,6 +78,26 @@ namespace CloudmersiveClient
             }
         }
 
+        public FaceLocateResponse LocateFaces(byte[] imageBytes)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("Apikey", Apikey);
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+
+
+                var bytes = imageBytes;
+
+                var response = client.UploadData("https://api.cloudmersive.com/image/face/locate", "POST", bytes);
+
+                FaceLocateResponse result = JsonConvert.DeserializeObject<FaceLocateResponse>(System.Text.Encoding.ASCII.GetString(response));
+
+
+                return result;
+            }
+        }
+
 
         public Image ConvertToPainting(byte[] imageBytes, string style = "udnie")
         {
