@@ -113,6 +113,9 @@ namespace CloudmersiveClientTestApp
 
             System.Drawing.Image outcome = client.CropToFirstFace(path);
 
+            var response = client.LocateFaces(File.ReadAllBytes(path));
+            txtOutput.Text = JsonConvert.SerializeObject(response);
+
 
             var imageSourceConverter = new ImageSourceConverter();
             byte[] tempBitmap = BitmapToByte((System.Drawing.Bitmap) outcome);
